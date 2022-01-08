@@ -66,8 +66,8 @@ export default function App() {
             <Tab.Navigator
               screenOptions={createScreenOptions}
               tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
+                activeTintColor: "green",
+                inactiveTintColor: "purple",
               }}
             >
               <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
