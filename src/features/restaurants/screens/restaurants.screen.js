@@ -36,7 +36,6 @@ export const RestaurantsScreen = () => {
         <LoadingContainer>
           <Loading
              size={50}
-             style={{ marginLeft: -25 }}
              animating={true}
              color={Colors.purple}
           />
@@ -46,10 +45,10 @@ export const RestaurantsScreen = () => {
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
-            return (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard restaurant={item} />
-          </Spacer>
+         return (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
           );
         }}
         keyExtractor={(item) => item.name}

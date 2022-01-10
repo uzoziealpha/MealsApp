@@ -14,6 +14,8 @@ const SearchContainer = styled.View`
 export const Search = () => {
     //this will store the search and search function 
   const { keyword, search } = useContext(LocationContext);
+// this lifecycle method will enable the search and context interact
+
   const [searchKeyword, setsearchKeyword] = useState(keyword);
 
 
@@ -23,12 +25,9 @@ export const Search = () => {
            placeholder="Search for a location"
            value={searchKeyword}
            onSubmitEditing={() => {
-               search(searchKeyword);
+              search(searchKeyword);
            }}
            onChangeText={(text) => {
-               if (!text.length) {
-                   return;
-               }
                setsearchKeyword(text);
            }}
         />
