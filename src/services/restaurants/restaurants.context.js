@@ -1,4 +1,5 @@
-import React, { useState, createContext, useEffect, useMemo } from "react";
+import React, { useState, useContext, createContext, useEffect, useMemo } from "react";
+import { LocationContext } from "../location/location.context";
 
 import {
   restaurantsRequest,
@@ -13,12 +14,17 @@ export const RestaurantsContextProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {location} = useContext(LocationContext);
 
-  const retrieveRestaurants = () => {
-    setIsLoading(true);
+  // i used loc as a short form of location to avoid issues. 
+  const retrieveRestaurants = (loc) => {
+    setIsLoading(true); 
+
+    // this will trigger our render cycle to the front of the screen or loader
+    setRestaurants([]);
     setTimeout(() => {
       //
-      restaurantsRequest()
+      restaurantsRequest(loc)
         .then(restaurantsTransform)
         .then((results) => {
           setIsLoading(false);
@@ -34,8 +40,11 @@ export const RestaurantsContextProvider = ({ children }) => {
 
   //use Effect is saying run retrieve restaurants when it mounts. 
   useEffect(() => {
-    retrieveRestaurants();
-  }, []);
+    if(location) {
+      const locationString = `${location.lat},${location.lng}`;
+      retrieveRestaurants(locationString);
+    }
+  }, [location]);
 
   return (
     <RestaurantsContext.Provider
