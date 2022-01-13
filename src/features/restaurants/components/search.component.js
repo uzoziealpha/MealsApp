@@ -1,4 +1,4 @@
-import React, { useContext,useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 
@@ -16,11 +16,7 @@ export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
 // this lifecycle method will enable the search and context interact
 
-  const [searchKeyword, setsearchKeyword] = useState(keyword);
-
-  useEffect(() => {
-      search(searchKeyword);
-  }, []);
+  const [searchKeyword, setSearchKeyword] = useState(keyword);
 
 
   return (
@@ -32,7 +28,7 @@ export const Search = () => {
               search(searchKeyword);
            }}
            onChangeText={(text) => {
-               setsearchKeyword(text);
+               setSearchKeyword(text);
            }}
         />
     </SearchContainer>

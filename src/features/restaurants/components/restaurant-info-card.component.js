@@ -28,6 +28,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -39,8 +40,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => (
+            <SvgXml 
+              key={`star-${placeId}-${i}`} //Make sure you give unique ID like this so the i - with the map function and iterate through the array with the ID that matches the API format
+              xml={star} 
+              width={20} 
+              height={20} 
+            />
             ))}
           </Rating>
           <SectionEnd>
