@@ -38,11 +38,16 @@ export const MapScreen = () => {
        }}
     >
         {restaurants.map((restaurant) => {
-            return <MapView.Marker>
-               
-            </MapView.Marker>;
-        })}
-    </Map>
+            return <MapView.Marker
+             key={restaurant.name}
+             title={restaurant.name}
+             coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+             }}
+            />;
+        })}  
+    </Map>    
   </>
   );
 };
