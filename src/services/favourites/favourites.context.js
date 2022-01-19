@@ -1,4 +1,4 @@
-import React, { Children, createContext } from "react";
+import React, { useState, createContext } from "react";
 
 export const FavouritesContext = createContext();
 
