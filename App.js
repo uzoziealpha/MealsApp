@@ -1,6 +1,7 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components/native";
+import * as firebase from "firebase";
 
 import {
   useFonts as useOswald,
@@ -15,8 +16,37 @@ import { RestaurantsContextProvider } from "./src/services/restaurants/restauran
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAECGRHOfvm6nR8yC1YhwejfGKMJtXyTkM",
+  authDomain: "mealstogo-4ba09.firebaseapp.com",
+  projectId: "mealstogo-4ba09",
+  storageBucket: "mealstogo-4ba09.appspot.com",
+  messagingSenderId: "229117290055",
+  appId: "1:229117290055:web:860d5a2ce39924dd267362",
+  measurementId: "G-GGHKYQ6BLH",
+};
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword("money22@gmail.io", "123456")
+        .then((user) => {
+          setIsAuthenticated(true);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }, 2000);
+  }, []);
+
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -29,19 +59,66 @@ export default function App() {
     return null;
   }
 
-//
+  if (!isAuthenticated) return null;
+
   return (
     <>
       <ThemeProvider theme={theme}>
-       <FavouritesContextProvider> 
-        <LocationContextProvider>
-          <RestaurantsContextProvider>  
-            <Navigation/>
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
-      </FavouritesContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
