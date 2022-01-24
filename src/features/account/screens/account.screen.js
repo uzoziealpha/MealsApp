@@ -6,7 +6,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 
 
 
-export const AccountScreen = ({ navigation}) => {
+export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
      <AccountCover/>
@@ -20,7 +20,7 @@ export const AccountScreen = ({ navigation}) => {
          </AuthButton>
          <Spacer  size="large">
          <AuthButton
-           icon="lock-open-outline"
+           icon="email"
            mode="contained"
            onPress={() => navigation.navigate("Register")}
          >

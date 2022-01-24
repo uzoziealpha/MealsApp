@@ -3,9 +3,9 @@ import React from "react";
 import { AccountBackground, AccountCover } from "../components/account.styles";
 
 export const RegisterScreen = () => {
-  return  (
+  return (
     <AccountBackground>
-   <AccountCover/>
-  </AccountBackground>
+      <AccountCover />
+    </AccountBackground>
   );
 };
