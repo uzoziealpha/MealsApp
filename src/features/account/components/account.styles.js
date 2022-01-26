@@ -1,10 +1,11 @@
 import styled from "styled-components/native";
 import { colors } from "../../../infrastructure/theme/colors";
 import { Button, TextInput } from "react-native-paper";
+import { Text } from "../../../components/typography/text.component";
 
 
 export const AccountBackground = styled.ImageBackground.attrs({
-    source: require("../../../../assets/5home_bg.jpeg"),
+    source: require("../../../../assets/home_bg.jpeg"),
 })`
   flex: 1;
   align-items: center;
