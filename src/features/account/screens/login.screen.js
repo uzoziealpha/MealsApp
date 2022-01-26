@@ -52,6 +52,11 @@ export const LoginScreen = () => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
+      <Spacer size="large">
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+           Back
+        </AuthButton>
+     </Spacer>
     </AccountBackground>
   );
 };
