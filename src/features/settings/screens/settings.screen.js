@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
+import {  TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { SafeArea } from "s../../../components/utility/safe-area.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 const SettingsItem = styled(List.Item)`
@@ -19,7 +20,9 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <AvatarContainer>
-        <Avatar.Icon size={150} icon="human" backgroundColor="purple" />
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+           <Avatar.Icon size={150} icon="human" backgroundColor="purple" />
+        </TouchableOpacity>
         <Spacer position="top" size="large">
           <Text variant="label">{user.email}</Text>
         </Spacer>
