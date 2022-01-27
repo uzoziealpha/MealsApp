@@ -6,12 +6,12 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-   const SettingsItem = styled(List.Item)`
-      padding: ${(props) => props.theme.space[3]};
-   `;
-   const AvatarContainer = styled.View`
+const SettingsItem = styled(List.Item)`
+    padding: ${(props) => props.theme.space[3]};
+`;
+const AvatarContainer = styled.View`
        align-items: center;
-   `;
+`;
 
 
 export const SettingsScreen = ({ navigation }) => {
